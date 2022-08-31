@@ -1,8 +1,8 @@
-class Board 
+class Board
   attr_accessor :grid
   def initialize
     @grid = empty_board
-  end 
+  end
 
   def empty_board
     [
@@ -13,8 +13,8 @@ class Board
       [".", ".", ".", ".", ".", ".", "."],
       [".", ".", ".", ".", ".", ".", "."],
       [".", ".", ".", ".", ".", ".", "."]
-  ]
-  end 
+    ]
+  end
 
   def grid_format
     printed_board = empty_board.map do |row|
@@ -22,4 +22,8 @@ class Board
     end
     printed_board.join("\n")
   end
-end 
+
+  def welcome
+    "Welcome to Connect 4!"
+  end
+end
