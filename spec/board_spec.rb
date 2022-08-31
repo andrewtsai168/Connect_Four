@@ -8,17 +8,10 @@ RSpec.describe Board do
       expect(board).to be_instance_of Board
     end
 
-    it 'has a grid' do 
+    xit 'has a grid' do 
       board = Board.new 
-      expect(board.grid).to eq([
-        ["A", "B", "C", "D", "E", "F", "G"],
-        [".", ".", ".", ".", ".", ".", "."],
-        [".", ".", ".", ".", ".", ".", "."],
-        [".", ".", ".", ".", ".", ".", "."],
-        [".", ".", ".", ".", ".", ".", "."],
-        [".", ".", ".", ".", ".", ".", "."],
-        [".", ".", ".", ".", ".", ".", "."]
-      ])
+      expect(board.grid_format).to eq(
+      "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......")
     end 
   end 
 end 
