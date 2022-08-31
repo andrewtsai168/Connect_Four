@@ -13,6 +13,11 @@ RSpec.describe Player do
       player = Player.new('Andrew')
       expect(player.name).to eq('Andrew')
     end
+
+    it 'has a piece X' do
+      player = Player.new('Andrew')
+      expect(player.piece).to eq('X')
+    end
   end
 
 
