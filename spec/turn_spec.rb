@@ -27,5 +27,4 @@ RSpec.describe Turn do
       expect(@turn.turn_number).to eq(0)
     end
   end
-
 end
