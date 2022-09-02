@@ -50,7 +50,7 @@ RSpec.describe Turn do
   end
 
   describe '#add_piece_to_board' do 
-   xit 'will drop the piece to the bottom of the column selected' do 
+    it 'will drop the piece to the bottom of the column selected' do 
       expect(@turn.board.grid).to eq(
         [
         ["A", "B", "C", "D", "E", "F", "G"],
@@ -63,7 +63,7 @@ RSpec.describe Turn do
         ]
       )
       expect(@turn.column_converter("A")).to eq(0)
-      expect(@turn.add_piece_to_board!).to eq(
+      expect(@turn.add_piece_to_board!(0)).to eq(
         [
         ["A", "B", "C", "D", "E", "F", "G"],
         [".", ".", ".", ".", ".", ".", "."],
