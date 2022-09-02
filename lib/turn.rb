@@ -58,6 +58,7 @@ class Turn
   
   
   def add_piece_to_board!(index_column)
+    @turn_number += 1
     index_row = 6
     while @board.grid[index_row][index_column] != "."
       index_row -= 1
