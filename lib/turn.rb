@@ -57,15 +57,13 @@ class Turn
   end
   
   
-  def add_piece_to_board! 
-    # place the piece in the bottom of the selected column 
+  def add_piece_to_board!(index_column)
     index_row = 6
-    until @board.grid[index_row][column_converter] == "."
+    while @board.grid[index_row][index_column] != "."
       index_row -= 1
     end
-    @board.grid[index][column_converter] = @player.piece
+    @board.grid[index_row][index_column] = @player.piece
     return @board.grid
-    # display_board
   end
 
 
