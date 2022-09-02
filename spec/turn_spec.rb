@@ -42,15 +42,16 @@ RSpec.describe Turn do
     end
   end
 
-  describe '#column_check' do 
-    xit 'checks if the column is full' do 
-      expect(@turn.column_check(0)).to eq
+  describe '#column_avail?' do 
+    it 'checks if the column is full' do 
+      expect(@turn.column_converter("A")).to eq(0)
+      expect(@turn.column_avail?(0)).to eq(true)
     end
   end
-  
+
   describe '#add_piece_to_board' do 
    xit 'will drop the piece to the bottom of the column selected' do 
-      expect(@turn.add_piece_to_board!).to eq(
+      expect(@turn.board.grid).to eq(
         [
         ["A", "B", "C", "D", "E", "F", "G"],
         [".", ".", ".", ".", ".", ".", "."],
@@ -61,7 +62,7 @@ RSpec.describe Turn do
         [".", ".", ".", ".", ".", ".", "."]
         ]
       )
-      expect(@turn.place_selection).to eq("A")
+      expect(@turn.column_converter("A")).to eq(0)
       expect(@turn.add_piece_to_board!).to eq(
         [
         ["A", "B", "C", "D", "E", "F", "G"],
