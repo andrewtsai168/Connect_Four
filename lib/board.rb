@@ -17,7 +17,7 @@ class Board
   end
 
   def grid_format
-    printed_board = empty_board.map do |row|
+    printed_board = @grid.map do |row|
       row.join
     end
     printed_board.join("\n")
