@@ -13,11 +13,27 @@ class Turn
     selection = gets.chomp.upcase
     
     until @board.grid.first.include?(selection)
-      p "Please try again"
+      p "Please input a column letter A-G."
       selection = gets.chomp.upcase
     end
-    puts "Good job!"
-
+    change_board
   end
 
+  def add_piece_to_board 
+    # place the piece in the bottom of the selected column 
+    if selection == @board.grid[0][0]
+      
+    end
+    display_board
+  end
+
+  def display_board
+    # this prints the new board after piece is placed
+  end
+
+
 end
+
+grid[0][0] => "A"
+grid[6][0] => "X" => # don't place the piece here 
+grid[5][0] => "." => # place piece here
