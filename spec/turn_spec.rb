@@ -27,4 +27,32 @@ RSpec.describe Turn do
       expect(@turn.turn_number).to eq(0)
     end
   end
+
+  describe '#add_piece_to_board' do 
+    it 'will drop the piece to the bottom of the column selected' do 
+      expect(turn.add_piece_to_board).to eq(
+        [
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."]
+        ]
+      )
+      expect(turn.place_selection).to eq("A")
+      expect(turn.add_piece_to_board).to eq(
+        [
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        ["X", ".", ".", ".", ".", ".", "."]
+        ]
+      )
+    end
+  end
 end
