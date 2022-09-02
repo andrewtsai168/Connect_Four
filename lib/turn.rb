@@ -23,7 +23,7 @@ class Turn
   end
 
 
-  def selection_converter
+  def column_converter
     if selection == "A"
       index_column = 0
     elsif selection == "B"
@@ -42,10 +42,19 @@ class Turn
   end 
   
 
-  def column_check(selection_converter)
-    # determines if column is full in order to move to piece placement
-    until grid[index_row][selection_converter] == "."
-      index = index_position - 1
+  def column_check(column_converter)
+    index_row = 6
+    column_contians = []
+    6.times do 
+      column_contains << grid[index_row][column_converter]
+      index_row -= 1
+    end
+    
+    if column_contains.include?(".")
+      add_piece_to_board
+    else
+      p "This column is full. Please select another."
+      place_selection
     end
   end
   
@@ -61,10 +70,10 @@ class Turn
 
   def place_column_a 
     index_row = 6
-    until grid[index_row][selection_converter] == "."
-      index_row = index_position - 1
+    until grid[index_row][column_converter]] == "."
+      index_row -= 1
     end
-    grid[index][selection_converter] = @player.piece
+    grid[index][column_converter]] = @player.piece
   end
 
 
