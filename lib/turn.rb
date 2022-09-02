@@ -21,43 +21,38 @@ class Turn
 
 
   def column_converter(selection)
-    selection_letters = @board.grid[0]
-    selection_letters.each.with_index do |l, index|
-      index_column = index if selection == l
-    end  
-    # if selection == "A"
-    #   index_column = 0 
-    # elsif selection == "B"
-    #   index_column = 1
-    # elsif selection == "C"
-    #   index_column = 2
-    # elsif selection == "D"
-    #   index_column = 3
-    # elsif selection == "E"
-    #   index_column = 4
-    # elsif selection == "F"
-    #   index_column = 5
-    # elsif selection == "G"
-    #   index_column = 6
+    # selection_letters = @board.grid[0]
+    
+    # selection_letters.each_with_index do |l, index|
+    #   index_column = index if selection == l
     # end
+    if selection == "A"
+      index_column = 0 
+    elsif selection == "B"
+      index_column = 1
+    elsif selection == "C"
+      index_column = 2
+    elsif selection == "D"
+      index_column = 3
+    elsif selection == "E"
+      index_column = 4
+    elsif selection == "F"
+      index_column = 5
+    elsif selection == "G"
+      index_column = 6
+    end
   end 
   
 
-  def column_check(column_converter)
+  def column_avail?(index_column)
     index_row = 6
-    column_contians = []
-    
-    6.times do 
-      column_contains << @board.grid[index_row][column_converter]
+    while @board.grid[index_row][index_column] == "." || index_row >= 1
       index_row -= 1
-    end
-    
-    if column_contains.include?(".")
-      @turn_number += 1
-      add_piece_to_board
-    else
-      p "This column is full. Please select another."
-      place_selection
+      if @board.grid[index_row][index_column] == "." 
+        return true
+      elsif index_row < 1 
+        return false
+      end
     end
   end
   
