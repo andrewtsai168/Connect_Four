@@ -22,9 +22,17 @@ class Turn
   def add_piece_to_board 
     # place the piece in the bottom of the selected column 
     if selection == @board.grid[0][0]
-      
+      place_column_a
     end
     display_board
+  end
+
+  def place_column_a 
+    index_position = 6
+    while grid[index_position][0] == "."
+      index_position = index_position - 1
+    end
+    
   end
 
   def display_board
