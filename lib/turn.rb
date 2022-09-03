@@ -9,7 +9,7 @@ class Turn
   end
 
   def place_selection
-    p "Choose a column A-G to drop your piece!"
+    print "\n" + "Choose a column A-G to drop your piece!"
     selection = gets.chomp.upcase
 
     until @board.grid.first.include?(selection)
