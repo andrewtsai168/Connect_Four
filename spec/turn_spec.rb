@@ -42,15 +42,15 @@ RSpec.describe Turn do
     end
   end
 
-  describe '#column_avail?' do 
-    it 'checks if the column is full' do 
+  describe '#column_avail?' do
+    it 'checks if the column is full' do
       expect(@turn.column_converter("A")).to eq(0)
       expect(@turn.column_avail?(0)).to eq(true)
     end
   end
 
-  describe '#add_piece_to_board' do 
-    it 'will drop the piece to the bottom of the column selected' do 
+  describe '#add_piece_to_board' do
+    it 'will drop the piece to the bottom of the column selected' do
       expect(@turn.board.grid).to eq(
         [
         ["A", "B", "C", "D", "E", "F", "G"],
@@ -77,14 +77,20 @@ RSpec.describe Turn do
     end
   end
 
-  describe '#display_board' do 
-    it 'will drop the piece to the bottom of the column selected' do 
+  describe '#display_board' do
+    it 'will drop the piece to the bottom of the column selected' do
       formatted_board = @turn.board.grid_format
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......")
 
       @turn.add_piece_to_board!(0)
       formatted_board = @turn.board.grid_format
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......")
+    end
+  end
+
+  describe '#random_column' do
+    it 'will choose random column' do
+      expect(@turn.board.grid[0]).to include(@turn.random_column)
     end
   end
 end
