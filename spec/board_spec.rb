@@ -15,10 +15,10 @@ RSpec.describe Board do
     end
   end
 
-  describe '#welcome' do
-    it 'has a welcome message' do
-      board = Board.new
-      expect(board.welcome). to eq("Welcome to Connect 4!")
-    end
-  end
+  # describe '#welcome' do
+  #   it 'has a welcome message' do
+  #     board = Board.new
+  #     expect(board.welcome). to eq("Welcome to Connect 4!")
+  #   end
+  # end
 end
