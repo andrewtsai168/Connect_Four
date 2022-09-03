@@ -1,13 +1,16 @@
 require 'rspec'
 require './lib/board'
 require './lib/player'
+require './lib/computer'
 require './lib/turn'
+
 
 RSpec.describe Turn do
   before (:each) do
     @board = Board.new
     @player = Player.new('Andrew')
-    @turn = Turn.new(@board, @player)
+    @computer = Computer.new
+    @turn = Turn.new(@board, @player, @computer)
   end
 
   describe '#initialize' do
@@ -29,6 +32,10 @@ RSpec.describe Turn do
 
     it 'has a player' do
       expect(@turn.player).to eq(@player)
+    end
+
+    it 'has a computer' do
+      expect(@turn.computer).to eq(@computer)
     end
 
     it 'has default turn number' do

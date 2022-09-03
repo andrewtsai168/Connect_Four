@@ -1,7 +1,7 @@
 class Turn
   attr_accessor :board, :player, :computer, :turn_number
 
-  def initialize(board, player)
+  def initialize(board, player, computer)
     @board = board
     @player = player
     @computer = computer
@@ -9,7 +9,7 @@ class Turn
   end
 
   def place_selection
-    p "Choose a column A-G to drop your piece!"
+    print "\n" + "Choose a column A-G to drop your piece!"
     selection = gets.chomp.upcase
 
     until @board.grid.first.include?(selection)

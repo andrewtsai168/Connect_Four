@@ -14,11 +14,4 @@ RSpec.describe Board do
       "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......")
     end
   end
-
-  describe '#welcome' do
-    it 'has a welcome message' do
-      board = Board.new
-      expect(board.welcome). to eq("Welcome to Connect 4!")
-    end
-  end
 end
