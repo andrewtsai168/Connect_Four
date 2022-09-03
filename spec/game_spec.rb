@@ -18,7 +18,24 @@ RSpec.describe Game do
     it 'exists' do
       expect(@game).to be_instance_of(Game)
     end
+
+    it 'has a turn' do
+      expect(@game.turn).to eq(@turn)
+    end
+
+    it 'has a board' do
+      expect(@game.board).to eq(@board)
+    end
+
+    it 'has a player' do
+      expect(@game.player).to eq(@player)
+    end
+
+    it 'has a computer' do
+      expect(@game.computer).to eq(@computer)
+    end 
   end
+
 
 
 end
