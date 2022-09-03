@@ -23,7 +23,7 @@ class Board
     printed_board.join("\n")
   end
 
-  def welcome
-    "Welcome to Connect 4!"
-  end
+  # def welcome
+  #   "Welcome to Connect 4!"
+  # end
 end
