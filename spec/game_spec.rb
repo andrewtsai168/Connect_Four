@@ -40,9 +40,5 @@ RSpec.describe Game do
     it 'has a welcome message' do
       expect(@game.welcome). to eq("Welcome to Connect 4!")
     end
-
-
   end
-
-
 end
