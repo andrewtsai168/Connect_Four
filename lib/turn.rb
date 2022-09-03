@@ -19,7 +19,6 @@ class Turn
     column_converter(selection)
   end
 
-
   def column_converter(selection)
     # selection_letters = @board.grid[0]
 
@@ -43,7 +42,6 @@ class Turn
     end
   end
 
-
   def column_avail?(index_column)
     index_row = 6
     while @board.grid[index_row][index_column] == "." || index_row >= 1
@@ -62,7 +60,11 @@ class Turn
     while @board.grid[index_row][index_column] != "."
       index_row -= 1
     end
-    @board.grid[index_row][index_column] = @player.piece
+    if @turn_number.odd? == true
+      @board.grid[index_row][index_column] = @player.piece
+    else
+      @board.grid[index_row][index_column] = @computer.piece
+    end
     @board.grid
   end
 
@@ -70,7 +72,6 @@ class Turn
     print @board.grid_format
   end
 
-  # require "pry"; binding.pry
   def random_column
     @board.grid[0].sample
   end
