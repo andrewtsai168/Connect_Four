@@ -1,6 +1,6 @@
 class Turn
   attr_accessor :board, :player, :computer, :turn_number
-  
+
   def initialize(board, player)
     @board = board
     @player = player
@@ -19,15 +19,14 @@ class Turn
     column_converter(selection)
   end
 
-
   def column_converter(selection)
     # selection_letters = @board.grid[0]
-    
+
     # selection_letters.each_with_index do |l, index|
     #   index_column = index if selection == l
     # end
     if selection == "A"
-      index_column = 0 
+      index_column = 0
     elsif selection == "B"
       index_column = 1
     elsif selection == "C"
@@ -41,32 +40,39 @@ class Turn
     elsif selection == "G"
       index_column = 6
     end
-  end 
-  
+  end
 
   def column_avail?(index_column)
     index_row = 6
     while @board.grid[index_row][index_column] == "." || index_row >= 1
       index_row -= 1
-      if @board.grid[index_row][index_column] == "." 
+      if @board.grid[index_row][index_column] == "."
         return true
-      elsif index_row < 1 
+      elsif index_row < 1
         return false
       end
     end
   end
-  
+
   def add_piece_to_board!(index_column)
     @turn_number += 1
     index_row = 6
     while @board.grid[index_row][index_column] != "."
       index_row -= 1
     end
-    @board.grid[index_row][index_column] = @player.piece
+    if @turn_number.odd? == true
+      @board.grid[index_row][index_column] = @player.piece
+    else
+      @board.grid[index_row][index_column] = @computer.piece
+    end
     @board.grid
   end
 
   def display_board
     print @board.grid_format
+  end
+
+  def random_column
+    @board.grid[0].sample
   end
 end
