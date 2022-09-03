@@ -33,9 +33,16 @@ RSpec.describe Game do
 
     it 'has a computer' do
       expect(@game.computer).to eq(@computer)
-    end 
+    end
   end
 
+  describe '#welcome' do
+    it 'has a welcome message' do
+      expect(@game.welcome). to eq("Welcome to Connect 4!")
+    end
+
+
+  end
 
 
 end
