@@ -78,11 +78,11 @@ RSpec.describe Turn do
   end
 
   describe '#display_board' do 
-    xit 'will drop the piece to the bottom of the column selected' do 
+    it 'will drop the piece to the bottom of the column selected' do 
       formatted_board = @turn.board.grid_format
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......")
-      # expect(@turn.place_selection).to eq("A")
-      @turn.add_piece_to_board!
+
+      @turn.add_piece_to_board!(0)
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......")
     end
   end
