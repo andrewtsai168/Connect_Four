@@ -83,6 +83,7 @@ RSpec.describe Turn do
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......")
 
       @turn.add_piece_to_board!(0)
+      formatted_board = @turn.board.grid_format
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......")
     end
   end
