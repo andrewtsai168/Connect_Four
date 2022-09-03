@@ -62,10 +62,8 @@ class Turn
     while @board.grid[index_row][index_column] != "."
       index_row -= 1
     end
-    # require 'pry'; binding.pry
     @board.grid[index_row][index_column] = @player.piece
-    # require 'pry'; binding.pry
-    return @board.grid
+    @board.grid
   end
 
   def display_board
