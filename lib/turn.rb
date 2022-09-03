@@ -56,24 +56,19 @@ class Turn
     end
   end
   
-  
   def add_piece_to_board!(index_column)
     @turn_number += 1
     index_row = 6
     while @board.grid[index_row][index_column] != "."
       index_row -= 1
     end
+    # require 'pry'; binding.pry
     @board.grid[index_row][index_column] = @player.piece
+    # require 'pry'; binding.pry
     return @board.grid
   end
 
-
-  # def display_board
-  #   # this prints the new board after piece is placed
-  #   @board.grid.grid_format
-  # end
+  def display_board
+    print @board.grid_format
+  end
 end
-
-# grid[0][0] => "A" 
-# grid[6][0] => "X" => don't place the piece here 
-# grid[5][0] => "." => place piece here
