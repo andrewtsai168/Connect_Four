@@ -26,8 +26,8 @@ class Game
       true 
     elsif vertical_winner? == true
       true
-    # elsif diagonal_winner? == true 
-    #   true
+    elsif diagonal_winner? == true 
+      true
     elsif draw? == true
       "GAME IS A DRAW"
     else 
@@ -65,13 +65,34 @@ class Game
   end
 
   def diagonal_winner?
-    diag_1 = [@board.grid[1][0], @board.grid[2][1], @board.grid[3][2], @board.grid[4][3], @board.grid[5][4], @board.grid[6][5]]
-    diag_2 = [@board.grid[1][1], @board.grid[2][2], @board.grid[3][3], @board.grid[4][4],@board.grid[5][5], @board.grid[6][6]]
-    diag_3 = [@board.grid[1][2], @board.grid[2][3], @board.grid[3][4], @board.grid[4][5], @board.grid[5][6]]
-    diag_4 = [@board.grid[1][3], @board.grid[2][4], @board.grid[3][5], @board.grid[4][6]]
-    diag_5 = [@board.grid[2][0], @board.grid[3][1], @board.grid[4][2], @board.grid[5][3], @board.grid[6][4]]
-    diag_6 = [@board.grid[3][0], @board.grid[4][1], @board.grid[5][2], @board.grid[6][3]]
+    diagonals = {
+      diag_1: [@board.grid[1][0], @board.grid[2][1], @board.grid[3][2], @board.grid[4][3], @board.grid[5][4], @board.grid[6][5]],
+      diag_2: [@board.grid[1][1], @board.grid[2][2], @board.grid[3][3], @board.grid[4][4],@board.grid[5][5], @board.grid[6][6]],
+      diag_3: [@board.grid[1][2], @board.grid[2][3], @board.grid[3][4], @board.grid[4][5], @board.grid[5][6]],
+      diag_4: [@board.grid[1][3], @board.grid[2][4], @board.grid[3][5], @board.grid[4][6]],
+      diag_5: [@board.grid[2][0], @board.grid[3][1], @board.grid[4][2], @board.grid[5][3], @board.grid[6][4]],
+      diag_6: [@board.grid[3][0], @board.grid[4][1], @board.grid[5][2], @board.grid[6][3]],
+      diag_7: [@board.grid[6][0], @board.grid[5][1], @board.grid[4][2], @board.grid[3][3], @board.grid[2][4], @board.grid[1][5]],
+      diag_8: [@board.grid[6][1], @board.grid[5][2], @board.grid[4][3], @board.grid[3][4], @board.grid[2][5], @board.grid[1][6]],
+      diag_9: [@board.grid[6][2], @board.grid[5][3], @board.grid[4][4], @board.grid[3][5], @board.grid[2][6]],
+      diag_10: [@board.grid[6][3], @board.grid[5][4], @board.grid[4][5], @board.grid[3][6]],
+      diag_11: [@board.grid[5][0], @board.grid[4][1], @board.grid[3][2], @board.grid[2][3], @board.grid[1][4]],
+      diag_12: [@board.grid[4][0], @board.grid[3][1], @board.grid[2][2], @board.grid[1][3]]
+    }
 
+    diag_arr = diagonals.map do |diag, element|
+      element.join
+    end
+    
+    diag_string = diag_arr.map do |diagonal|
+      diagonal.include?("XXXX" || "OOOO")
+    end
+
+    if diag_string.include?(true)
+      true
+    else
+      false
+    end
   end
 
   def draw? 
