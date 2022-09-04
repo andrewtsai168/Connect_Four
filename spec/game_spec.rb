@@ -41,4 +41,75 @@ RSpec.describe Game do
       expect(@game.welcome). to eq("Welcome to Connect 4!")
     end
   end
+
+  describe '#check_for_winner' do 
+    it 'will check for a horizontal winner' do 
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(3)
+
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        ["X", "X", "X", "X", "O", "O", "O"]
+        ])
+      expect(@game.check_for_winner).to eq(@player)
+    end
+
+    xit 'will check for vertical winner' do
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(0)
+
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        ["X", ".", ".", ".", ".", ".", "."],
+        ["X", ".", ".", ".", ".", ".", "."],
+        ["X", ".", ".", ".", ".", ".", "."],
+        ["X", ".", ".", ".", "O", "O", "O"]
+        ])
+      expect(@game.check_for_winner).to eq(@player)
+    end
+
+    xit 'will check for diagonal winner' do
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(3)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(3)
+      @turn.add_piece_to_board!(3)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(3)
+
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", "X", ".", ".", "."],
+        [".", ".", "X", "O", ".", ".", "."],
+        [".", "X", "O", "X", "X", ".", "."],
+        ["X", "O", "O", "X", "O", "O", "."]
+        ])
+      expect(@game.check_for_winner).to eq(@player)
+    end
+  end
 end
