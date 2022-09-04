@@ -22,23 +22,63 @@ class Game
   end
 
   def check_for_winner
-    horizontal_winner?
-    vertical_winner?
-    diagonal_winner?
+    if horizontal_winner? == true 
+      true 
+    elsif vertical_winner? == true
+      true
+    # elsif diagonal_winner? == true 
+    #   true
+    elsif draw? == true
+      "GAME IS A DRAW"
+    else 
+      false
+    end
   end
 
   def horizontal_winner?
-    hori_arr = @board.grid.map do |row|
-      require 'pry'; binding.pry
-      row.join.include?("XXXX" || "OOOO")
+    hori_arrs = @board.grid.map do |rows|
+      rows.join
+    end
+    rows = hori_arrs.map do |row|
+      row.include?("XXXX" || "OOOO")
+    end
+    if rows.include?(true)
+      true
+    else 
+      false
     end
   end
 
   def vertical_winner?
-
+    transposed_board = @board.grid.transpose
+    vert_arrs = transposed_board.map do |columns|
+      columns.join
+    end
+    columns = vert_arrs.map do |column|
+      column.include?("XXXX" || "OOOO")
+    end
+    if columns.include?(true)
+      true 
+    else 
+      false
+    end
   end
 
   def diagonal_winner?
+    diag_1 = [@board.grid[1][0], @board.grid[2][1], @board.grid[3][2], @board.grid[4][3], @board.grid[5][4], @board.grid[6][5]]
+    diag_2 = [@board.grid[1][1], @board.grid[2][2], @board.grid[3][3], @board.grid[4][4],@board.grid[5][5], @board.grid[6][6]]
+    diag_3 = [@board.grid[1][2], @board.grid[2][3], @board.grid[3][4], @board.grid[4][5], @board.grid[5][6]]
+    diag_4 = [@board.grid[1][3], @board.grid[2][4], @board.grid[3][5], @board.grid[4][6]]
+    diag_5 = [@board.grid[2][0], @board.grid[3][1], @board.grid[4][2], @board.grid[5][3], @board.grid[6][4]]
+    diag_6 = [@board.grid[3][0], @board.grid[4][1], @board.grid[5][2], @board.grid[6][3]]
 
+  end
+
+  def draw? 
+    if @turn.turn_number >= 42 
+      true
+    else
+      false
+    end
   end
 end
