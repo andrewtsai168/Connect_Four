@@ -61,10 +61,10 @@ RSpec.describe Game do
         [".", ".", ".", ".", ".", ".", "."],
         ["X", "X", "X", "X", "O", "O", "O"]
         ])
-      expect(@game.check_for_winner).to eq(@player)
+      expect(@game.check_for_winner).to eq(true)
     end
 
-    xit 'will check for vertical winner' do
+    it 'will check for vertical winner' do
       @turn.add_piece_to_board!(0)
       @turn.add_piece_to_board!(4)
       @turn.add_piece_to_board!(0)
@@ -82,7 +82,7 @@ RSpec.describe Game do
         ["X", ".", ".", ".", ".", ".", "."],
         ["X", ".", ".", ".", "O", "O", "O"]
         ])
-      expect(@game.check_for_winner).to eq(@player)
+      expect(@game.check_for_winner).to eq(true)
     end
 
     xit 'will check for diagonal winner' do
@@ -162,17 +162,17 @@ RSpec.describe Game do
       @turn.add_piece_to_board!(0)
 
     
-      expect(@game.board).to eq([
-      ["A", "B", "C", "D", "E", "F", "G"],
-      ["O", "X", "O", "X", "O", "X", "O"],
-      ["X", "O", "X", "O", "X", "O", "X"],
-      ["X", "O", "X", "O", "X", "O", "X"],
-      ["O", "X", "O", "X", "O", "X", "O"],
-      ["X", "O", "X", "O", "X", "O", "X"],
-      ["X", "O", "X", "O", "X", "O", "X"]
-      ])
+      # expect(@game.board).to eq([
+      # ["A", "B", "C", "D", "E", "F", "G"],
+      # ["O", "X", "O", "X", "O", "X", "O"],
+      # ["X", "O", "X", "O", "X", "O", "X"],
+      # ["X", "O", "X", "O", "X", "O", "X"],
+      # ["O", "X", "O", "X", "O", "X", "O"],
+      # ["X", "O", "X", "O", "X", "O", "X"],
+      # ["X", "O", "X", "O", "X", "O", "X"]
+      # ])
       expect(@game.turn.turn_number).to eq(42)
-      expect(@game.check_for_winner).to eq("DRAW")
+      expect(@game.check_for_winner).to eq("GAME IS A DRAW")
     end   
   end
 end
