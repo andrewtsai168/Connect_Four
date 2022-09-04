@@ -113,64 +113,65 @@ RSpec.describe Game do
     end
 
     it 'is a draw when board full' do 
-      @turn.add_piece_to_board!(0)
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(6)
+      # row 1
+      @turn.add_piece_to_board!(0) #X
+      @turn.add_piece_to_board!(1) #O
+      @turn.add_piece_to_board!(2) #X
+      @turn.add_piece_to_board!(3) #o
+      @turn.add_piece_to_board!(4) #x
+      @turn.add_piece_to_board!(5) #o
+      @turn.add_piece_to_board!(6) #x
+      # row 2
+      @turn.add_piece_to_board!(5) #o
+      @turn.add_piece_to_board!(6) #x
+      @turn.add_piece_to_board!(3) #o
+      @turn.add_piece_to_board!(2) #x
+      @turn.add_piece_to_board!(1) #o
+      @turn.add_piece_to_board!(4) #x
+      @turn.add_piece_to_board!(6) #o
+      # row 3
+      @turn.add_piece_to_board!(0) #x
+      @turn.add_piece_to_board!(0) #o
+      @turn.add_piece_to_board!(5) #x
+      @turn.add_piece_to_board!(4) #o
+      @turn.add_piece_to_board!(3) #x
+      @turn.add_piece_to_board!(2) #o
+      @turn.add_piece_to_board!(1) #x
+      # row 4
+      @turn.add_piece_to_board!(1) #o
+      @turn.add_piece_to_board!(0) #x
+      @turn.add_piece_to_board!(3) #o
+      @turn.add_piece_to_board!(2) #x
+      @turn.add_piece_to_board!(5) #o
+      @turn.add_piece_to_board!(4) #x
+      @turn.add_piece_to_board!(5) #o
+      # row 5 
+      @turn.add_piece_to_board!(6) #x
+      @turn.add_piece_to_board!(3) #o
+      @turn.add_piece_to_board!(6) #x
+      @turn.add_piece_to_board!(1) #o
+      @turn.add_piece_to_board!(2) #x
+      @turn.add_piece_to_board!(6) #o
+      @turn.add_piece_to_board!(0) #x
 
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(6)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(0)
-
-      @turn.add_piece_to_board!(0)
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(6)
-
-      @turn.add_piece_to_board!(6)
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(0)
-
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(0)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(6)
-
-      @turn.add_piece_to_board!(6)
-      @turn.add_piece_to_board!(5)
-      @turn.add_piece_to_board!(4)
-      @turn.add_piece_to_board!(3)
-      @turn.add_piece_to_board!(2)
-      @turn.add_piece_to_board!(1)
-      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(6) #o
+      @turn.add_piece_to_board!(5) #x
+      @turn.add_piece_to_board!(4) #o
+      @turn.add_piece_to_board!(3) #x
+      @turn.add_piece_to_board!(2) #o
+      @turn.add_piece_to_board!(1) #x
+      @turn.add_piece_to_board!(0) #o
 
     
-      # expect(@game.board).to eq([
-      # ["A", "B", "C", "D", "E", "F", "G"],
-      # ["O", "X", "O", "X", "O", "X", "O"],
-      # ["X", "O", "X", "O", "X", "O", "X"],
-      # ["X", "O", "X", "O", "X", "O", "X"],
-      # ["O", "X", "O", "X", "O", "X", "O"],
-      # ["X", "O", "X", "O", "X", "O", "X"],
-      # ["X", "O", "X", "O", "X", "O", "X"]
-      # ])
+      expect(@game.board.grid).to eq([
+      ["A", "B", "C", "D", "E", "F", "G"],
+      ["O", "X", "O", "X", "O", "X", "O"],
+      ["X", "O", "X", "O", "X", "O", "X"],
+      ["X", "O", "X", "O", "X", "O", "X"],
+      ["O", "X", "O", "X", "O", "X", "O"],
+      ["X", "O", "X", "O", "X", "O", "X"],
+      ["X", "O", "X", "O", "X", "O", "X"]
+      ])
       expect(@game.turn.turn_number).to eq(42)
       expect(@game.check_for_winner).to eq("GAME IS A DRAW")
     end   
