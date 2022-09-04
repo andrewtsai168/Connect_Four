@@ -20,4 +20,25 @@ class Game
       @turn.place_selection
     end
   end
+
+  def check_for_winner
+    horizontal_winner?
+    vertical_winner?
+    diagonal_winner?
+  end
+
+  def horizontal_winner?
+    hori_arr = @board.grid.map do |row|
+      require 'pry'; binding.pry
+      row.join.include?("XXXX" || "OOOO")
+    end
+  end
+
+  def vertical_winner?
+
+  end
+
+  def diagonal_winner?
+
+  end
 end
