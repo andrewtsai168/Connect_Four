@@ -88,7 +88,7 @@ class Turn
   end
 
   def display_board
-    print @board.grid_format + "\n"
+    print @board.grid_format + "\n\n\n"
   end
 
   def random_column
