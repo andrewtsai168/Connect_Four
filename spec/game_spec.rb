@@ -195,7 +195,6 @@ RSpec.describe Game do
         [".", ".", ".", ".", ".", ".", "X"],
         ["O", "O", "O", "O", "X", "X", "X"]
         ])
-        require 'pry'; binding.pry
       expect(@game.check_for_winner).to eq(@computer)
     end
   end
