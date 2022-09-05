@@ -148,24 +148,24 @@ RSpec.describe Game do
       # row 5 
       @turn.add_piece_to_board!(6) #x
       @turn.add_piece_to_board!(3) #o
-      @turn.add_piece_to_board!(6) #x
+      @turn.add_piece_to_board!(4) #x
       @turn.add_piece_to_board!(1) #o
       @turn.add_piece_to_board!(2) #x
-      @turn.add_piece_to_board!(6) #o
+      @turn.add_piece_to_board!(4) #o
       @turn.add_piece_to_board!(0) #x
 
-      @turn.add_piece_to_board!(6) #o
-      @turn.add_piece_to_board!(5) #x
-      @turn.add_piece_to_board!(4) #o
-      @turn.add_piece_to_board!(3) #x
+      @turn.add_piece_to_board!(0) #o
+      @turn.add_piece_to_board!(6) #x
       @turn.add_piece_to_board!(2) #o
       @turn.add_piece_to_board!(1) #x
-      @turn.add_piece_to_board!(0) #o
+      @turn.add_piece_to_board!(3) #o
+      @turn.add_piece_to_board!(5) #x
+      @turn.add_piece_to_board!(6) #o
 
     
       expect(@game.board.grid).to eq([
       ["A", "B", "C", "D", "E", "F", "G"],
-      ["O", "X", "O", "X", "O", "X", "O"],
+      ["O", "X", "O", "O", "O", "X", "O"],
       ["X", "O", "X", "O", "X", "O", "X"],
       ["X", "O", "X", "O", "X", "O", "X"],
       ["O", "X", "O", "X", "O", "X", "O"],
