@@ -61,10 +61,10 @@ RSpec.describe Game do
         [".", ".", ".", ".", ".", ".", "."],
         ["X", "X", "X", "X", "O", "O", "O"]
         ])
-      expect(@game.check_for_winner).to eq(@player)
+      expect(@game.horizontal_winner).to eq(@player)
     end
 
-    xit 'will check for vertical winner' do
+    it 'will check for vertical winner' do
       @turn.add_piece_to_board!(0)
       @turn.add_piece_to_board!(4)
       @turn.add_piece_to_board!(0)
@@ -82,10 +82,10 @@ RSpec.describe Game do
         ["X", ".", ".", ".", ".", ".", "."],
         ["X", ".", ".", ".", "O", "O", "O"]
         ])
-      expect(@game.check_for_winner).to eq(true)
+      expect(@game.vertical_winner).to eq(@player)
     end
 
-    xit 'will check for diagonal winner' do
+    it 'will check for diagonal winner' do
       @turn.add_piece_to_board!(0)
       @turn.add_piece_to_board!(1)
       @turn.add_piece_to_board!(1)
@@ -109,10 +109,10 @@ RSpec.describe Game do
         [".", "X", "O", "X", "X", ".", "."],
         ["X", "O", "O", "X", "O", "O", "."]
         ])
-      expect(@game.check_for_winner).to eq(true)
+      expect(@game.diagonal_winner).to eq(@player)
     end
 
-    xit 'is a draw when board full' do 
+    it 'is a draw when board full' do 
       # row 1
       @turn.add_piece_to_board!(0) #X
       @turn.add_piece_to_board!(1) #O
@@ -173,7 +173,30 @@ RSpec.describe Game do
       ["X", "O", "X", "O", "X", "O", "X"]
       ])
       expect(@game.turn.turn_number).to eq(42)
-      expect(@game.check_for_winner).to eq("GAME IS A DRAW")
-    end   
+      expect(@game.draw).to eq("DRAW")
+    end 
+
+    it 'can have computer win' do 
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(3)
+      
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "X"],
+        ["O", "O", "O", "O", "X", "X", "X"]
+        ])
+        require 'pry'; binding.pry
+      expect(@game.check_for_winner).to eq(@computer)
+    end
   end
 end
