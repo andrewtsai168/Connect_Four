@@ -22,30 +22,36 @@ class Game
   end
 
   def check_for_winner
-    if horizontal_winner? == true 
-      true 
-    elsif vertical_winner? == true
-      true
-    elsif diagonal_winner? == true 
-      true
-    elsif draw? == true
-      "GAME IS A DRAW"
-    else 
-      false
+    if horizontal_winner == @player
+      @player 
+    elsif horizontal_winner == @computer
+      @computer
     end
+    
+    # elsif vertical_winner? == true
+    #   true
+    # elsif diagonal_winner? == true 
+    #   true
+    # elsif draw? == true
+    #   "GAME IS A DRAW"
+    # else 
+    #   false
+    # end
   end
 
-  def horizontal_winner?
+  def horizontal_winner
     hori_arrs = @board.grid.map do |rows|
       rows.join
     end
-    rows = hori_arrs.map do |row|
+  
+    rows = hori_arrs.find do |row|
       row.include?("XXXX" || "OOOO")
     end
-    if rows.include?(true)
-      true
-    else 
-      false
+    # require 'pry'; binding.pry
+    if rows.include?("XXXX")
+      @player
+    elsif rows.include?("OOOO") 
+      @computer
     end
   end
 
@@ -54,13 +60,13 @@ class Game
     vert_arrs = transposed_board.map do |columns|
       columns.join
     end
-    columns = vert_arrs.map do |column|
+    columns = vert_arrs.find do |column|
       column.include?("XXXX" || "OOOO")
     end
-    if columns.include?(true)
-      true 
-    else 
-      false
+    if columns.include?("XXXX")
+      @player
+    elsif columns.include?("OOOO")
+      @computer
     end
   end
 
