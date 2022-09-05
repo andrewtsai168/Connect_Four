@@ -13,15 +13,18 @@ class Game
     main_menu
     turn = Turn.new(@board, @player, @computer)
     while true
+      print "#{@player.name}'s Turn \n"
       turn.player_turn
       if check_for_winner != nil
-        return false
+        puts "The winner is ~*~*~#{@player.name}~*~*~"
+        break
       end
+      print "Computer's Turn \n"
       turn.computer_turn
       if check_for_winner != nil
-        return false
+        puts "The winner is ~*~*~Computer~*~*~"
+        break
       end
-  
     end
   end
 
@@ -78,7 +81,7 @@ class Game
     end
 
     columns = vert_arrs.find do |column|
-      column.include?("XXXX" || "OOOO")
+      column.include?("XXXX") || column.include?("OOOO")
     end
 
     if columns != nil
@@ -111,7 +114,7 @@ class Game
     end
 
     diag_string = diag_arr.find do |diagonal|
-      diagonal.include?("XXXX" || "OOOO")
+      diagonal.include?("XXXX") || diagonal.include?("OOOO")
     end
 
     if diag_string != nil
