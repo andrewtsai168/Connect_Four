@@ -12,5 +12,4 @@ computer = Computer.new
 turn = Turn.new(board, player, computer)
 game = Game.new(turn, board, player, computer)
 
-# turn.place_selection
 game.start 
