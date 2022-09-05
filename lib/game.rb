@@ -1,11 +1,28 @@
 class Game
   attr_accessor :turn, :board, :player, :computer
-  
+
   def initialize(turn, board, player, computer)
     @turn = turn
     @board = board
     @player = player
     @computer = computer
+  end
+
+  def start
+    puts welcome
+    main_menu
+    turn = Turn.new(@board, @player, @computer)
+    while true
+      turn.player_turn
+      if check_for_winner != nil
+        return false
+      end
+      turn.computer_turn
+      if check_for_winner != nil
+        return false
+      end
+  
+    end
   end
 
   def welcome
@@ -17,7 +34,7 @@ class Game
     play_choice = gets.chomp.upcase
     if play_choice == "P"
       @turn.display_board
-      @turn.place_selection
+      # @turn.place_selection
     end
   end
 
@@ -40,7 +57,7 @@ class Game
     hori_arrs = @board.grid.map do |rows|
       rows.join
     end
-    
+
     rows = hori_arrs.find do |row|
       row.include?("OOOO") || row.include?("XXXX")
     end
@@ -48,7 +65,7 @@ class Game
     if rows != nil
       if rows.include?("XXXX")
         @player
-      elsif rows.include?("OOOO") 
+      elsif rows.include?("OOOO")
         @computer
       end
     end
@@ -59,18 +76,18 @@ class Game
     vert_arrs = transposed_board.map do |columns|
       columns.join
     end
-    
+
     columns = vert_arrs.find do |column|
       column.include?("XXXX" || "OOOO")
     end
-    
+
     if columns != nil
       if columns.include?("XXXX")
         @player
       elsif columns.include?("OOOO")
         @computer
       end
-    end 
+    end
   end
 
   def diagonal_winner
@@ -92,7 +109,7 @@ class Game
     diag_arr = diagonals.map do |diag, element|
       element.join
     end
-    
+
     diag_string = diag_arr.find do |diagonal|
       diagonal.include?("XXXX" || "OOOO")
     end
@@ -103,11 +120,11 @@ class Game
       elsif diag_string.include?("OOOO")
         @computer
       end
-    end 
+    end
   end
 
   def draw
-    if @turn.turn_number >= 42 
+    if @turn.turn_number >= 42
       "DRAW"
     end
   end

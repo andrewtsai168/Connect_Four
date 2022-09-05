@@ -1,12 +1,31 @@
 class Turn
-  attr_accessor :board, :player, :computer, :turn_number
+  attr_accessor :board, :player, :computer, :turn_number, :index_column
 
   def initialize(board, player, computer)
     @board = board
     @player = player
     @computer = computer
     @turn_number = 0
+    @index_column = 0
   end
+
+  def player_turn
+    place_selection
+    if column_avail?(index_column) == true
+      add_piece_to_board!(index_column)
+      display_board
+    end
+
+  end
+
+  def computer_turn
+    random_column
+    if column_avail?(index_column) == true
+      add_piece_to_board!(index_column)
+      display_board
+    end
+  end
+
 
   def place_selection
     print "\n" + "Choose a column A-G to drop your piece!"
@@ -26,19 +45,19 @@ class Turn
     #   index_column = index if selection == l
     # end
     if selection == "A"
-      index_column = 0
+      @index_column = 0
     elsif selection == "B"
-      index_column = 1
+      @index_column = 1
     elsif selection == "C"
-      index_column = 2
+      @index_column = 2
     elsif selection == "D"
-      index_column = 3
+      @index_column = 3
     elsif selection == "E"
-      index_column = 4
+      @index_column = 4
     elsif selection == "F"
-      index_column = 5
+      @index_column = 5
     elsif selection == "G"
-      index_column = 6
+      @index_column = 6
     end
   end
 
@@ -69,10 +88,13 @@ class Turn
   end
 
   def display_board
-    print @board.grid_format
+    print @board.grid_format + "\n"
   end
 
   def random_column
-    @board.grid[0].sample
+    # require "pry"; binding.pry
+    selection = @board.grid[0].sample
+    column_converter(selection)
   end
+
 end
