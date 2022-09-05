@@ -92,7 +92,6 @@ class Turn
   end
 
   def random_column
-    # require "pry"; binding.pry
     selection = @board.grid[0].sample
     column_converter(selection)
   end
