@@ -22,10 +22,18 @@ class Game
   end
 
   def check_for_winner
-    horizontal_winner
-    vertical_winner
-    diagonal_winner
-    draw
+    if horizontal_winner != nil
+      return horizontal_winner
+    end
+    if vertical_winner != nil
+      return vertical_winner
+    end
+    if diagonal_winner != nil
+      return diagonal_winner
+    end
+    if draw != nil
+      return draw
+    end
   end
 
   def horizontal_winner
@@ -34,8 +42,9 @@ class Game
     end
     
     rows = hori_arrs.find do |row|
-      row.include?("XXXX" || "OOOO")
+      row.include?("OOOO") || row.include?("XXXX")
     end
+
     if rows != nil
       if rows.include?("XXXX")
         @player
