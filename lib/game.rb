@@ -16,13 +16,21 @@ class Game
       print "#{@player.name}'s Turn \n"
       turn.player_turn
       if check_for_winner != nil
-        puts "The winner is ~*~*~#{@player.name}~*~*~"
+        if check_for_winner == "DRAW"
+          puts "~*~*~*GAME IS A DRAW~*~*~*"
+        else
+          puts "The winner is ~*~*~#{@player.name}~*~*~"
+        end
         break
       end
       print "Computer's Turn \n"
       turn.computer_turn
       if check_for_winner != nil
-        puts "The winner is ~*~*~Computer~*~*~"
+        if check_for_winner == "DRAW"
+          puts "~*~*~*GAME IS A DRAW~*~*~*"
+        else
+          puts "The winner is ~*~*~Computer~*~*~"
+        end
         break
       end
     end
@@ -37,7 +45,6 @@ class Game
     play_choice = gets.chomp.upcase
     if play_choice == "P"
       @turn.display_board
-      # @turn.place_selection
     end
   end
 
