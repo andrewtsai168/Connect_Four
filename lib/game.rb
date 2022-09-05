@@ -22,55 +22,49 @@ class Game
   end
 
   def check_for_winner
-    if horizontal_winner == @player
-      @player 
-    elsif horizontal_winner == @computer
-      @computer
-    end
-    
-    # elsif vertical_winner? == true
-    #   true
-    # elsif diagonal_winner? == true 
-    #   true
-    # elsif draw? == true
-    #   "GAME IS A DRAW"
-    # else 
-    #   false
-    # end
+    horizontal_winner
+    vertical_winner
+    diagonal_winner
+    draw
   end
 
   def horizontal_winner
     hori_arrs = @board.grid.map do |rows|
       rows.join
     end
-  
+    
     rows = hori_arrs.find do |row|
       row.include?("XXXX" || "OOOO")
     end
-    # require 'pry'; binding.pry
-    if rows.include?("XXXX")
-      @player
-    elsif rows.include?("OOOO") 
-      @computer
+    if rows != nil
+      if rows.include?("XXXX")
+        @player
+      elsif rows.include?("OOOO") 
+        @computer
+      end
     end
   end
 
-  def vertical_winner?
+  def vertical_winner
     transposed_board = @board.grid.transpose
     vert_arrs = transposed_board.map do |columns|
       columns.join
     end
+    
     columns = vert_arrs.find do |column|
       column.include?("XXXX" || "OOOO")
     end
-    if columns.include?("XXXX")
-      @player
-    elsif columns.include?("OOOO")
-      @computer
-    end
+    
+    if columns != nil
+      if columns.include?("XXXX")
+        @player
+      elsif columns.include?("OOOO")
+        @computer
+      end
+    end 
   end
 
-  def diagonal_winner?
+  def diagonal_winner
     diagonals = {
       diag_1: [@board.grid[1][0], @board.grid[2][1], @board.grid[3][2], @board.grid[4][3], @board.grid[5][4], @board.grid[6][5]],
       diag_2: [@board.grid[1][1], @board.grid[2][2], @board.grid[3][3], @board.grid[4][4],@board.grid[5][5], @board.grid[6][6]],
@@ -90,22 +84,22 @@ class Game
       element.join
     end
     
-    diag_string = diag_arr.map do |diagonal|
+    diag_string = diag_arr.find do |diagonal|
       diagonal.include?("XXXX" || "OOOO")
     end
 
-    if diag_string.include?(true)
-      true
-    else
-      false
-    end
+    if diag_string != nil
+      if diag_string.include?("XXXX")
+        @player
+      elsif diag_string.include?("OOOO")
+        @computer
+      end
+    end 
   end
 
-  def draw? 
+  def draw
     if @turn.turn_number >= 42 
-      true
-    else
-      false
+      "DRAW"
     end
   end
 end
