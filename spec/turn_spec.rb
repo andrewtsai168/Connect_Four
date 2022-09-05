@@ -97,7 +97,7 @@ RSpec.describe Turn do
 
   describe '#random_column' do
     it 'will choose random column' do
-      expect(@turn.board.grid[0]).to include(@turn.random_column)
+      expect([0, 1, 2, 3, 4, 5, 6]).to include(@turn.random_column)
     end
   end
 end
