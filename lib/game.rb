@@ -13,31 +13,42 @@ class Game
     if main_menu != "P"
       return false
     end
+    puts @board.grid_format
     turn = Turn.new(@board, @player, @computer)
     while true
-      print "#{@player.name}'s Turn \n"
+      print "#{@player.name}'s Turn"
       turn.player_turn
-      if check_for_winner != nil
-        if check_for_winner == "DRAW"
-          puts "~*~*~*GAME IS A DRAW~*~*~*"
-        else
-          puts "The winner is ~*~*~#{@player.name}~*~*~"
-        end
+      if end_game != nil
         break
       end
       print "Computer's Turn \n"
       turn.computer_turn
-      if check_for_winner != nil
-        if check_for_winner == "DRAW"
-          puts "~*~*~*GAME IS A DRAW~*~*~*"
-        else
-          puts "The winner is ~*~*~Computer~*~*~"
-        end
+      if end_game != nil
         break
       end
     end
   end
 
+  def end_game
+    if check_for_winner != nil
+      if check_for_winner == "DRAW"
+        puts "~*~*~*GAME IS A DRAW~*~*~*"
+        clear_board
+      elsif check_for_winner == @computer
+        puts "The winner is ~*~*~Computer~*~*~"
+        clear_board
+      else
+        puts "The winner is ~*~*~#{@player.name}~*~*~"
+        clear_board
+      end
+    end
+  end
+
+  def clear_board
+    @board.grid = @board.empty_board
+    start
+  end
+  
   def welcome
      "Welcome to Connect 4!"
   end
