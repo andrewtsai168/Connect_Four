@@ -26,7 +26,6 @@ class Turn
     end
   end
 
-
   def place_selection
     print "\n" + "Choose a column A-G to drop your piece!"
     selection = gets.chomp.upcase
@@ -39,11 +38,6 @@ class Turn
   end
 
   def column_converter(selection)
-    # selection_letters = @board.grid[0]
-
-    # selection_letters.each_with_index do |l, index|
-    #   index_column = index if selection == l
-    # end
     if selection == "A"
       @index_column = 0
     elsif selection == "B"
@@ -95,5 +89,4 @@ class Turn
     selection = @board.grid[0].sample
     column_converter(selection)
   end
-
 end
