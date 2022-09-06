@@ -10,7 +10,9 @@ class Game
 
   def start
     puts welcome
-    main_menu
+    if main_menu != "P"
+      return false
+    end
     turn = Turn.new(@board, @player, @computer)
     while true
       print "#{@player.name}'s Turn \n"
@@ -43,9 +45,7 @@ class Game
   def main_menu
     puts "Enter p to play. Enter q to quit."
     play_choice = gets.chomp.upcase
-    if play_choice == "P"
-      @turn.display_board
-    end
+    play_choice
   end
 
   def check_for_winner
