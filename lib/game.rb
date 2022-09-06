@@ -13,9 +13,10 @@ class Game
     if main_menu != "P"
       return false
     end
+    puts @board.grid_format
     turn = Turn.new(@board, @player, @computer)
     while true
-      print "#{@player.name}'s Turn \n"
+      print "#{@player.name}'s Turn"
       turn.player_turn
       if end_game != nil
         break
@@ -40,7 +41,6 @@ class Game
         puts "The winner is ~*~*~#{@player.name}~*~*~"
         clear_board
       end
-      # break
     end
   end
 
