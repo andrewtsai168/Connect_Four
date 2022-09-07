@@ -36,9 +36,75 @@ RSpec.describe Game do
     end
   end
 
+  describe '#end_game' do
+    it 'checks for a winner and displays a message' do
+      @turn.add_piece_to_board!(0)
+      expect(@game.end_game).to eq(nil)
+      
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(3)
+
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        ["X", "X", "X", "X", "O", "O", "O"]
+        ])
+
+      expect(@game.end_game).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."]
+        ])
+    end
+  end
+
+  describe '#clear_board' do
+    it 'clears game board after a win or draw' do
+      @turn.add_piece_to_board!(0)
+      @turn.add_piece_to_board!(4)
+      @turn.add_piece_to_board!(1)
+      @turn.add_piece_to_board!(5)
+      @turn.add_piece_to_board!(2)
+      @turn.add_piece_to_board!(6)
+      @turn.add_piece_to_board!(3)
+
+      expect(@game.board.grid).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        ["X", "X", "X", "X", "O", "O", "O"]
+        ])
+      expect(@game.horizontal_winner).to eq(@player)
+      expect(@game.clear_board).to eq([
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."]
+        ])
+    end
+  end
+  
   describe '#welcome' do
     it 'has a welcome message' do
-      expect(@game.welcome). to eq("Welcome to Connect 4!")
+      expect(@game.welcome). to eq("Welcome to CONNECT FOUR!")
     end
   end
 
