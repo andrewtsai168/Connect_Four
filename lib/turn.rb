@@ -42,6 +42,11 @@ class Turn
     column_converter(selection)
   end
 
+  def random_column
+    selection = @board.grid[0].sample
+    column_converter(selection)
+  end
+
   def column_converter(selection)
     if selection == "A"
       @index_column = 0
@@ -88,10 +93,5 @@ class Turn
 
   def display_board
     print @board.grid_format + "\n\n\n"
-  end
-
-  def random_column
-    selection = @board.grid[0].sample
-    column_converter(selection)
   end
 end
