@@ -10,21 +10,20 @@ class Game
 
   def start
     puts welcome
-    if main_menu != "P"
-      return false
-    end
-    puts @board.grid_format
-    turn = Turn.new(@board, @player, @computer)
-    while true
-      print "#{@player.name}'s Turn"
-      turn.player_turn
-      if end_game != nil
-        break
-      end
-      print "Computer's Turn \n"
-      turn.computer_turn
-      if end_game != nil
-        break
+    while main_menu == "P"
+      puts @board.grid_format
+      turn = Turn.new(@board, @player, @computer)
+      while true
+        print "#{@player.name}'s Turn"
+        turn.player_turn
+        if end_game != nil
+          break
+        end
+        print "Computer's Turn \n"
+        turn.computer_turn
+        if end_game != nil
+          break
+        end
       end
     end
   end
@@ -46,7 +45,6 @@ class Game
 
   def clear_board
     @board.grid = @board.empty_board
-    start
   end
   
   def welcome
@@ -56,6 +54,10 @@ class Game
   def main_menu
     puts "Enter p to play. Enter q to quit."
     play_choice = gets.chomp.upcase
+    while play_choice != "P" && play_choice != "Q"
+      puts "Enter p to play. Enter q to quit."
+      play_choice = gets.chomp.upcase
+    end
     play_choice
   end
 
