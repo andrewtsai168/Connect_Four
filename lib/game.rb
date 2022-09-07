@@ -48,7 +48,7 @@ class Game
   end
   
   def welcome
-     "Welcome to Connect 4!"
+     "Welcome to CONNECT FOUR!"
   end
 
   def main_menu
