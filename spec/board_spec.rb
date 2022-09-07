@@ -1,4 +1,5 @@
 require 'rspec'
+require './spec/spec_helper'
 require './lib/board'
 
 RSpec.describe Board do
