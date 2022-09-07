@@ -55,7 +55,7 @@ class Game
     puts "Enter p to play. Enter q to quit."
     play_choice = gets.chomp.upcase
     while play_choice != "P" && play_choice != "Q"
-      puts "Enter p to play. Enter q to quit."
+      puts "Not a valid selection. Enter p to play. Enter q to quit."
       play_choice = gets.chomp.upcase
     end
     play_choice
