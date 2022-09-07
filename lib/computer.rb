@@ -3,6 +3,4 @@ class Computer
   def initialize
     @piece = 'O'
   end
-
-
 end
