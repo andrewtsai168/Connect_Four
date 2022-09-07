@@ -41,6 +41,16 @@ RSpec.describe Turn do
     it 'has default turn number' do
       expect(@turn.turn_number).to eq(0)
     end
+
+    it 'has a default index column' do
+      expect(@turn.index_column).to eq(0)
+    end
+  end
+
+  describe '#random_column' do
+    it 'will choose random column' do
+      expect([0, 1, 2, 3, 4, 5, 6]).to include(@turn.random_column)
+    end
   end
 
   describe '#column_converter' do
@@ -50,8 +60,19 @@ RSpec.describe Turn do
   end
 
   describe '#column_avail?' do
-    it 'checks if the column is full' do
+    it 'returns true if column is available' do
       expect(@turn.column_converter("A")).to eq(0)
+      expect(@turn.board.grid).to eq(
+        [
+        ["A", "B", "C", "D", "E", "F", "G"],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", "."]
+        ]
+      )
       expect(@turn.column_avail?(0)).to eq(true)
     end
   end
@@ -92,12 +113,6 @@ RSpec.describe Turn do
       @turn.add_piece_to_board!(0)
       formatted_board = @turn.board.grid_format
       expect(formatted_board).to eq("ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......")
-    end
-  end
-
-  describe '#random_column' do
-    it 'will choose random column' do
-      expect([0, 1, 2, 3, 4, 5, 6]).to include(@turn.random_column)
     end
   end
 end
