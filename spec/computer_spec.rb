@@ -15,7 +15,6 @@ RSpec.describe Computer do
       expect(@computer).to be_instance_of(Computer)
     end
 
-
     it 'has a piece O' do
       expect(@computer.piece).to eq('O')
     end
