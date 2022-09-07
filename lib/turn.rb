@@ -10,19 +10,24 @@ class Turn
   end
 
   def player_turn
-    place_selection
-    if column_avail?(index_column) == true
-      add_piece_to_board!(index_column)
-      display_board
+    while true
+      place_selection
+      if column_avail?(index_column) == true
+        add_piece_to_board!(index_column)
+        display_board
+        break
+      end
     end
-
   end
 
   def computer_turn
-    random_column
-    if column_avail?(index_column) == true
-      add_piece_to_board!(index_column)
-      display_board
+    while true
+      random_column
+      if column_avail?(index_column) == true
+        add_piece_to_board!(index_column)
+        display_board
+        break
+      end
     end
   end
 
