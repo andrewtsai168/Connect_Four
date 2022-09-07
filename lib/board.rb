@@ -1,5 +1,6 @@
 class Board
   attr_accessor :grid
+  
   def initialize
     @grid = empty_board
   end
